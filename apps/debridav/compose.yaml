@@ -1,6 +1,6 @@
 services:
   debridav:
-    image: ghcr.io/skjaere/debridav:v0
+    image: ghcr.io/skjaere/debridav:latest
     container_name: debridav
     restart: unless-stopped
     user: "${PUID}:${PGID}"
@@ -13,7 +13,6 @@ services:
       - PGID=${PGID}
       - UMASK=002
       - TZ=${TZ}
-      
       - DEBRIDAV_ROOTPATH=${DEBRIDAV_ROOT_PATH}
       - DEBRIDAV_DOWNLOADPATH=${DEBRIDAV_DOWNLOAD_PATH}
       - DEBRIDAV_MOUNTPATH=${DEBRIDAV_MOUNT_PATH_CONTAINERS}
@@ -49,12 +48,15 @@ services:
       start_period: 2s
       retries: 1000
     depends_on:
-      postgres-debridav:
+      debridav_postgres:
         condition: service_healthy
+    profiles:
+      - debridav
+      - all
 
   rclone:
     image: rclone/rclone:latest
-    container_name: rclone-debridav
+    container_name: rclone
     restart: unless-stopped
     environment:
       - TZ=${TZ}
@@ -62,7 +64,7 @@ services:
       - PGID=${PGID}
     volumes:
       - ${DEBRIDAV_MOUNT_PATH_HOST_FS}:${DEBRIDAV_MOUNT_PATH_CONTAINERS}:rshared
-      - /opt/docker/data/debridav/rclone.conf:/config/rclone/rclone.conf
+      - ./rclone.conf:/config/rclone/rclone.conf
       - /dev/fuse:/dev/fuse
     cap_add:
       - SYS_ADMIN
@@ -83,10 +85,13 @@ services:
       --low-level-retries=1
       --dir-cache-time=1s
       -vv
+    profiles:
+      - debridav
+      - all
 
-  postgres-debridav:
+  debridav_postgres:
     image: postgres:latest
-    container_name: postgres-debridav
+    container_name: debridav_postgres
     restart: unless-stopped
     environment:
       - POSTGRES_USER=debridav
@@ -100,3 +105,6 @@ services:
       test: [ "CMD-SHELL", "pg_isready -d debridav" ]
       interval: 5s
       retries: 10
+    profiles:
+      - debridav
+      - all
