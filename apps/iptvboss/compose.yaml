@@ -25,8 +25,3 @@ services:
     profiles:
       - iptvboss
       - all
-    networks:
-      - aio_network
-networks:
-  aio_network:
-    external: true
