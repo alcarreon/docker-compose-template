@@ -1,3 +1,2 @@
 apps/authelia/config/notification.txt
 data/
-*.env
