@@ -9,6 +9,7 @@ services:
       - APP_ENV=production
       - PUID=${PUID}
       - PGID=${PGID}
+      - ENCRYPTION_KEY=${ENCRYPTION_KEY?}
       - PUBLIC_SESSION_SECRET=${PUBLIC_SESSION_SECRET?}
     labels:
       - "traefik.enable=true"
