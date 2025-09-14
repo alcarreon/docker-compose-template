@@ -10,7 +10,6 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - PUBLIC_SESSION_SECRET=${PUBLIC_SESSION_SECRET?}
-      - ENCRYPTION_KEY=${ENCRYPTION_KEY?}
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.arcane.rule=Host(`${ARCANE_HOSTNAME?}`)"
