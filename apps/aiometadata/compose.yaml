@@ -18,7 +18,10 @@ services:
       - DEBUG=true
       - TMDB_SOCKS_PROXY_URL=socks5://warp:1080
       - DATABASE_URI=sqlite://addon/data/db.sqlite
-      - ADDON_PASSWORD=${ADDON_PASSWORD?}
+      - BUILT_IN_TMDB_API_KEY=${BUILT_IN_TMDB_API_KEY?}
+      - BUILT_IN_TVDB_API_KEY=${BUILT_IN_TVDB_API_KEY?}
+      - CACHE_WARM_INTERVAL_HOURS=${CACHE_WARM_INTERVAL_HOURS?}
+      - CACHE_WARM_LANGUAGE=${CACHE_WARM_LANGUAGE?}
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.aiometadata.rule=Host(`${AIOMETADATA_HOSTNAME?}`)"
