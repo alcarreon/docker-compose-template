@@ -99,6 +99,7 @@ include:
   - apps/yamtrack/compose.yaml
   - apps/zilean/compose.yaml
   - apps/zipline/compose.yaml
+  - apps/nzbdav/compose.yaml
   # Uncomment if you are using zurg and comment out decypharr
   # There is also a way to use both together, but it requires 2 rclone instances
   # To use both, update Zurg's rclone service name and its container name to rclone_zurg

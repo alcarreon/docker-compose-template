@@ -103,7 +103,8 @@ services:
         ${YAMTRACK_HOSTNAME},
         ${ZILEAN_HOSTNAME},
         ${ZIPLINE_HOSTNAME},
-        ${ZURG_HOSTNAME}
+        ${ZURG_HOSTNAME},
+        ${NZBDAV_HOSTNAME}
     profiles:
       - cloudflare-ddns
       - all
