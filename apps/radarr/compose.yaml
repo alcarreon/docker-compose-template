@@ -11,7 +11,9 @@ services:
     volumes:
       - /mnt:/mnt:rslave
       - ${DOCKER_DATA_DIR}/radarr/default/:/config
-      - /usr/bin/rclone:/usr/bin/rclone
+      - /movies:/movies
+      - /downloads:/downloads
+      - nzbdav:/mnt/nzbdav
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.radarr.rule=Host(`${RADARR_HOSTNAME}`)"
@@ -32,20 +34,19 @@ services:
       - radarr
       - all
 
-
   radarr4k:
     container_name: radarr4k
-    expose:
-      - 7878
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
+    expose:
+      - 7878
     image: ghcr.io/hotio/radarr:release
     restart: unless-stopped
     volumes:
       - /mnt:/mnt:rslave
-      - ${DOCKER_DATA_DIR}/radarr/4k:/config
-      - /usr/bin/rclone:/usr/bin/rclone
+      - ${DOCKER_DATA_DIR}/radarr/4k/:/config
+      - /movies4k:/movies
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.radarr4k.rule=Host(`${RADARR4K_HOSTNAME}`)"
@@ -68,17 +69,17 @@ services:
 
   radarranime:
     container_name: radarranime
-    expose:
-      - 7878
-    image: ghcr.io/hotio/radarr:release
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
+    expose:
+      - 7878
+    image: ghcr.io/hotio/radarr:release
     restart: unless-stopped
     volumes:
       - /mnt:/mnt:rslave
-      - ${DOCKER_DATA_DIR}/radarr/anime:/config
-      - /usr/bin/rclone:/usr/bin/rclone
+      - ${DOCKER_DATA_DIR}/radarr/anime/:/config
+      - /movies:/movies
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.radarranime.rule=Host(`${RADARRANIME_HOSTNAME}`)"
@@ -98,3 +99,4 @@ services:
     profiles:
       - radarr
       - all
+
