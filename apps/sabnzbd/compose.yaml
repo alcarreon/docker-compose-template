@@ -9,8 +9,7 @@ services:
       - SABNZBD__host_whitelist=sabnzbd.albertpirate.org,localhost,127.0.0.1
     volumes:
       - ${DOCKER_DATA_DIR}/sabnzbd:/config
-      - /downloads:/downloads
-      - /incomplete-downloads:/incomplete-downloads
+      - /mnt:/mnt:rslave
     expose:
       - 8080
     restart: unless-stopped

@@ -22,3 +22,35 @@ time=2025-11-10T02:57:32.162Z level=INFO msg="Arrs service is disabled in config
 time=2025-11-10T02:57:32.162Z level=INFO msg="RClone mount service is disabled in configuration"
 time=2025-11-10T02:57:32.164Z level=INFO msg="AltMount server started" port=8080 webdav_path=/webdav api_path=/api providers=0 download_workers=15 processor_workers=2
 time=2025-11-10T02:57:32.166Z level=INFO msg="AltMount server started successfully"
+time=2025-11-10T06:07:07.426Z level=INFO msg="Received shutdown signal" signal=terminated
+time=2025-11-10T06:07:07.426Z level=INFO msg="Starting graceful shutdown sequence"
+time=2025-11-10T06:07:07.426Z level=INFO msg="Stopping health worker..."
+time=2025-11-10T06:07:07.426Z level=INFO msg="Health worker stopped by context"
+time=2025-11-10T06:07:07.426Z level=INFO msg="Health worker stopped"
+time=2025-11-10T06:07:07.426Z level=INFO msg="Health worker stopped"
+time=2025-11-10T06:07:07.426Z level=INFO msg="Shutting down server..."
+time=2025-11-10T06:07:07.426Z level=INFO msg="Server shutdown completed"
+time=2025-11-10T06:07:07.426Z level=INFO msg="AltMount server shutdown completed successfully"
+time=2025-11-10T06:07:07.426Z level=INFO msg="Queue worker stopped" component=importer-service worker_id=0
+time=2025-11-10T06:07:07.426Z level=INFO msg="Queue worker stopped" component=importer-service worker_id=1
+time=2025-11-10T06:08:44.386Z level=INFO msg="Directory validation successful" metadata_path=/config/metadata database_path=/config/altmount.db log_file=/config/altmount.log
+time=2025-11-10T06:08:44.387Z level=INFO msg="Starting AltMount server with log rotation configured" log_file=/config/altmount.log log_level=info max_size_mb=100 max_age_days=30 max_backups=10 compress=true
+time=2025-11-10T06:08:44.388Z level=INFO msg="Starting server without NNTP providers - configure via API to enable downloads"
+time=2025-11-10T06:08:44.388Z level=INFO msg="RClone RC notifications disabled"
+time=2025-11-10T06:08:44.394Z level=INFO msg="goose: no migrations to run. current version: 3"
+time=2025-11-10T06:08:44.395Z level=INFO msg="Starting NZB import service" component=importer-service workers=2
+time=2025-11-10T06:08:44.399Z level=INFO msg="NZB import service started successfully" component=importer-service
+time=2025-11-10T06:08:44.400Z level=INFO msg="Queue worker started" component=importer-service worker_id=1 processing_interval=5s
+time=2025-11-10T06:08:44.400Z level=INFO msg="Queue worker started" component=importer-service worker_id=0 processing_interval=5s
+time=2025-11-10T06:08:44.401Z level=INFO msg="Direct authentication provider configured"
+time=2025-11-10T06:08:44.404Z level=INFO msg="Authentication service initialized"
+time=2025-11-10T06:08:44.404Z level=INFO msg="API server enabled with Fiber routes" prefix=/api
+time=2025-11-10T06:08:44.404Z level=INFO msg="Initializing AltMount server components" providers=0 download_workers=15 processor_workers=2
+time=2025-11-10T06:08:44.404Z level=INFO msg="Starting health worker" check_interval=5s max_concurrent_jobs=1
+time=2025-11-10T06:08:44.405Z level=INFO msg="Health system initialized - reset any files from 'checking' to 'pending' status"
+time=2025-11-10T06:08:44.406Z level=INFO msg="Health worker started successfully"
+time=2025-11-10T06:08:44.407Z level=INFO msg="Health worker started" enabled=true
+time=2025-11-10T06:08:44.407Z level=INFO msg="Arrs service is disabled in configuration"
+time=2025-11-10T06:08:44.407Z level=INFO msg="RClone mount service is disabled in configuration"
+time=2025-11-10T06:08:44.408Z level=INFO msg="AltMount server started" port=8080 webdav_path=/webdav api_path=/api providers=0 download_workers=15 processor_workers=2
+time=2025-11-10T06:08:44.411Z level=INFO msg="AltMount server started successfully"

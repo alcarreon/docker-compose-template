@@ -67,6 +67,7 @@ include:
   - apps/realdebrid-account-monitor/compose.yaml
   - apps/recyclarr/compose.yaml
   - apps/rss-bridge/compose.yaml
+  - apps/sabnzbd/compose.yaml
   - apps/seanime/compose.yaml
   - apps/searxng/compose.yaml
   - apps/sonarr/compose.yaml
