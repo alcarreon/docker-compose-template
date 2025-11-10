@@ -92,6 +92,7 @@ include:
   - apps/traefik/compose.yaml
   - apps/tweakio/compose.yaml
   - apps/uptime-kuma/compose.yaml
+  - apps/usenetstreamer/compose.yaml
   - apps/vaultwarden/compose.yaml
   - apps/wallos/compose.yaml
   - apps/warp/compose.yaml

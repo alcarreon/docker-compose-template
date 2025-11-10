@@ -105,7 +105,8 @@ services:
         ${ZIPLINE_HOSTNAME},
         ${ZURG_HOSTNAME},
         ${NZBDAV_HOSTNAME},
-        ${SABNZBD_HOSTNAME}
+        ${SABNZBD_HOSTNAME},
+        ${USENETSTREAMER_HOSTNAME}
     profiles:
       - cloudflare-ddns
       - all

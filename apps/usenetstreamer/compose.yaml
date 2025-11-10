@@ -1,0 +1,47 @@
+services:
+  usenetstreamer:
+    image: ghcr.io/sanket9225/usenetstreamer:latest
+    container_name: usenetstreamer
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ:-UTC}
+      - INDEXER_MANAGER=prowlarr
+      - INDEXER_MANAGER_URL=${PROWLARR_URL:-https://prowlarr.${DOMAIN}}
+      - INDEXER_MANAGER_API_KEY=${PROWLARR_API_KEY}
+      - INDEXER_MANAGER_INDEXERS=-1
+      - ADDON_SHARED_SECRET=${USENETSTREAMER_SHARED_SECRET}
+      - NZBDAV_URL=${NZBDAV_URL:-http://nzbdav:3000}
+      - NZBDAV_API_KEY=${NZBDAV_API_KEY}
+      - NZBDAV_WEBDAV_URL=${NZBDAV_WEBDAV_URL:-http://nzbdav:3000}
+      - NZBDAV_WEBDAV_USER=${NZBDAV_WEBDAV_USER}
+      - NZBDAV_WEBDAV_PASS=${NZBDAV_WEBDAV_PASS}
+      - NZBDAV_CATEGORY=${NZBDAV_CATEGORY:-Stremio}
+      - ADDON_BASE_URL=${USENETSTREAMER_BASE_URL:-https://usenetstreamer.${DOMAIN}}
+    expose:
+      - 7000
+    volumes:
+      - ${DOCKER_DATA_DIR}/usenetstreamer:/config
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.usenetstreamer.rule=Host(`${USENETSTREAMER_HOSTNAME}`)"
+      - "traefik.http.routers.usenetstreamer.entrypoints=websecure"
+      - "traefik.http.routers.usenetstreamer.tls.certresolver=letsencrypt"
+      - "traefik.http.services.usenetstreamer.loadbalancer.server.port=7000"
+    # healthcheck:
+    #   test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:7000/"]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 3
+    #   start_period: 30s
+    networks:
+      - aio_network
+    profiles:
+      - usenetstreamer
+      - stremio
+      - all
+
+networks:
+  aio_network:
+    external: true
