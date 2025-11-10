@@ -1,46 +1,21 @@
 services:
-  nzbdav:
-    image: ghcr.io/nzbdav-dev/nzbdav
+  nzbdav: 
+    image: nzbdav/nzbdav:alpha
     container_name: nzbdav
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=Etc/UTC
-      - NZBDAV_STREAMING_MODE=true
-      - NZBDAV_WEBDAV_ENABLE=true
-    volumes:
-      - ${DOCKER_DATA_DIR}/nzbdav:/config
-      - nzbdav:/data
-    expose:
-      - 8080
     restart: unless-stopped
+    expose:
+      - 3000
+    environment:
+      - "PUID=${PUID}"
+      - "PGID=${PGID}"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.nzbdav.rule=Host(`${NZBDAV_HOSTNAME}`)"
+      - "traefik.http.routers.nzbdav.rule=Host(`${NZBDAV_HOSTNAME?}`)"
       - "traefik.http.routers.nzbdav.entrypoints=websecure"
       - "traefik.http.routers.nzbdav.tls.certresolver=letsencrypt"
       - "traefik.http.routers.nzbdav.middlewares=authelia@docker"
-      - "traefik.http.services.nzbdav.loadbalancer.server.port=3000"
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/queue"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
-      start_period: 30s
+    volumes:
+      - ./config:/config
     profiles:
       - nzbdav
-      - usenet
       - all
-
-volumes:
-  nzbdav:
-    driver: rclone
-    driver_opts:
-      remote: 'nzb-dav:'
-      allow_other: 'true'
-      vfs_cache_mode: off
-      dir_cache_time: 1s
-      allow_non_empty: 'true'
-      uid: 1001
-      gid: 1001
-      path_style: 'relative'

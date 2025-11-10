@@ -6,11 +6,12 @@ services:
     expose:
       - 3552
     environment:
-      - APP_ENV=production
       - PUID=${PUID}
       - PGID=${PGID}
-      - ENCRYPTION_KEY=${ENCRYPTION_KEY?}
-      - PUBLIC_SESSION_SECRET=${PUBLIC_SESSION_SECRET?}
+      - APP_URL=https://${ARCANE_HOSTNAME}
+      - ENCRYPTION_KEY=${ARCANE_ENCRYPTION_KEY}
+      - JWT_SECRET=${ARCANE_JWT_SECRET}
+      - DATABASE_URL=file:/app/data/arcane.db?_pragma=journal_mode(WAL)&_pragma=busy_timeout(2500)&_txlock=immediate
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.arcane.rule=Host(`${ARCANE_HOSTNAME?}`)"
