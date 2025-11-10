@@ -12,7 +12,6 @@ services:
     volumes:
       - ${DOCKER_DATA_DIR}/jellyfin:/config
       - /mnt:/mnt:rslave
-      - nzbdav:/movies:ro
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.jellyfin.rule=Host(`${JELLYFIN_HOSTNAME?}`)"

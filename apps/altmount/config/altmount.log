@@ -1,0 +1,24 @@
+time=2025-11-10T02:57:32.013Z level=INFO msg="Directory validation successful" metadata_path=/config/metadata database_path=/config/altmount.db log_file=/config/altmount.log
+time=2025-11-10T02:57:32.014Z level=INFO msg="Starting AltMount server with log rotation configured" log_file=/config/altmount.log log_level=info max_size_mb=100 max_age_days=30 max_backups=10 compress=true
+time=2025-11-10T02:57:32.014Z level=INFO msg="Starting server without NNTP providers - configure via API to enable downloads"
+time=2025-11-10T02:57:32.015Z level=INFO msg="RClone RC notifications disabled"
+time=2025-11-10T02:57:32.097Z level=INFO msg="OK   001_initial_schema.sql (21.43ms)"
+time=2025-11-10T02:57:32.113Z level=INFO msg="OK   002_add_repair_retry_system.sql (14.34ms)"
+time=2025-11-10T02:57:32.125Z level=INFO msg="OK   003_add_file_id_column.sql (12.5ms)"
+time=2025-11-10T02:57:32.127Z level=INFO msg="goose: successfully migrated database to version: 3"
+time=2025-11-10T02:57:32.130Z level=INFO msg="Starting NZB import service" component=importer-service workers=2
+time=2025-11-10T02:57:32.133Z level=INFO msg="NZB import service started successfully" component=importer-service
+time=2025-11-10T02:57:32.135Z level=INFO msg="Direct authentication provider configured"
+time=2025-11-10T02:57:32.135Z level=INFO msg="Queue worker started" component=importer-service worker_id=0 processing_interval=5s
+time=2025-11-10T02:57:32.135Z level=INFO msg="Queue worker started" component=importer-service worker_id=1 processing_interval=5s
+time=2025-11-10T02:57:32.138Z level=INFO msg="Authentication service initialized"
+time=2025-11-10T02:57:32.143Z level=INFO msg="API server enabled with Fiber routes" prefix=/api
+time=2025-11-10T02:57:32.156Z level=INFO msg="Initializing AltMount server components" providers=0 download_workers=15 processor_workers=2
+time=2025-11-10T02:57:32.160Z level=INFO msg="Starting health worker" check_interval=5s max_concurrent_jobs=1
+time=2025-11-10T02:57:32.162Z level=INFO msg="Health system initialized - reset any files from 'checking' to 'pending' status"
+time=2025-11-10T02:57:32.162Z level=INFO msg="Health worker started successfully"
+time=2025-11-10T02:57:32.162Z level=INFO msg="Health worker started" enabled=true
+time=2025-11-10T02:57:32.162Z level=INFO msg="Arrs service is disabled in configuration"
+time=2025-11-10T02:57:32.162Z level=INFO msg="RClone mount service is disabled in configuration"
+time=2025-11-10T02:57:32.164Z level=INFO msg="AltMount server started" port=8080 webdav_path=/webdav api_path=/api providers=0 download_workers=15 processor_workers=2
+time=2025-11-10T02:57:32.166Z level=INFO msg="AltMount server started successfully"

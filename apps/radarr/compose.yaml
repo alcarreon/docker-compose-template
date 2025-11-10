@@ -11,9 +11,7 @@ services:
     volumes:
       - /mnt:/mnt:rslave
       - ${DOCKER_DATA_DIR}/radarr/default/:/config
-      - /movies:/movies
-      - /downloads:/downloads
-      - nzbdav:/mnt/nzbdav
+      - /usr/bin/rclone:/usr/bin/rclone
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.radarr.rule=Host(`${RADARR_HOSTNAME}`)"
