@@ -18,7 +18,7 @@ services:
     volumes:
       - /mnt:/mnt:rslave
       - ${DOCKER_DATA_DIR}/sonarr/default:/config
-      - /downloads:/downloads
+      - /usr/bin/rclone:/usr/bin/rclone
     depends_on:
       decypharr:
         condition: service_healthy
@@ -50,7 +50,7 @@ services:
     volumes:
       - /mnt:/mnt:rslave
       - ${DOCKER_DATA_DIR}/sonarr/4k:/config
-      - /downloads:/downloads
+      - /usr/bin/rclone:/usr/bin/rclone
     depends_on:
       decypharr:
         condition: service_healthy
@@ -84,7 +84,7 @@ services:
     volumes:
       - /mnt:/mnt:rslave
       - ${DOCKER_DATA_DIR}/sonarr/anime:/config
-      - /downloads:/downloads
+      - /usr/bin/rclone:/usr/bin/rclone
     depends_on:
       decypharr:
         condition: service_healthy
@@ -97,7 +97,5 @@ services:
     profiles:
       - all
 
-# volumes:
-#   nzbdav:
-#     name: aio_nzbdav
-#     external: true
+
+      

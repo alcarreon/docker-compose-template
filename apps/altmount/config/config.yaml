@@ -1,7 +1,7 @@
 webdav:
     port: 8080
-    user: usenet
-    password: usenet
+    user: acarreon
+    password: Tricounty1
 api:
     prefix: /api
 auth:
@@ -10,32 +10,34 @@ database:
     path: /config/altmount.db
 metadata:
     root_path: /config/metadata
+    delete_source_nzb_on_removal: false
 streaming:
     max_download_workers: 15
     max_cache_size_mb: 32
 health:
-    enabled: true
-    auto_repair_enabled: false
+    enabled: false
+    library_dir: null
+    cleanup_orphaned_metadata: false
     check_interval_seconds: 5
-    max_concurrent_jobs: 1
-    max_retries: 2
-    max_segment_connections: 5
-    check_all_segments: true
+    max_connections_for_health_checks: 5
+    segment_sample_percentage: 5
+    library_sync_interval_minutes: 360
+    library_sync_concurrency: 0
 rclone:
     path: /config
     password: ""
     salt: ""
-    rc_enabled: false
+    rc_enabled: true
     rc_url: ""
     rc_port: 5573
     rc_user: admin
     rc_pass: admin
     rc_options: {}
-    mount_enabled: false
+    mount_enabled: true
     mount_options: {}
-    log_level: INFO
-    uid: 1000
-    gid: 1000
+    log_level: DEBUG
+    uid: 1001
+    gid: 1001
     umask: "002"
     buffer_size: 32M
     attr_timeout: 1s
@@ -60,12 +62,50 @@ rclone:
     syslog: true
     no_mod_time: false
     no_checksum: false
-    async_read: false
+    async_read: true
     vfs_fast_fingerprint: false
     use_mmap: false
 import:
     max_processor_workers: 2
     queue_processing_interval_seconds: 5
+    allowed_file_extensions:
+        - .mp4
+        - .mkv
+        - .avi
+        - .mov
+        - .wmv
+        - .flv
+        - .webm
+        - .m4v
+        - .mpg
+        - .mpeg
+        - .m2ts
+        - .ts
+        - .vob
+        - .3gp
+        - .3g2
+        - .h264
+        - .h265
+        - .hevc
+        - .ogv
+        - .ogm
+        - .strm
+        - .iso
+        - .img
+        - .divx
+        - .xvid
+        - .rm
+        - .rmvb
+        - .asf
+        - .asx
+        - .wtv
+        - .mk3d
+        - .dvr-ms
+    max_import_connections: 5
+    import_cache_size_mb: 64
+    segment_sample_percentage: 1
+    import_strategy: NONE
+    import_dir: null
 log:
     file: /config/altmount.log
     level: info
@@ -74,7 +114,7 @@ log:
     max_backups: 10
     compress: true
 sabnzbd:
-    enabled: false
+    enabled: true
     complete_dir: /complete
     categories: []
     fallback_host: ""
@@ -84,5 +124,16 @@ arrs:
     max_workers: 5
     radarr_instances: []
     sonarr_instances: []
-providers: []
-mount_path: ""
+providers:
+    - id: provider_1
+      host: secure.news.easynews.com
+      port: 563
+      username: qbisftweeo
+      password: szxr-txfi-owti
+      max_connections: 12
+      tls: true
+      insecure_tls: false
+      enabled: true
+      is_backup_provider: false
+mount_path: /config/altmount
+profiler_enabled: false

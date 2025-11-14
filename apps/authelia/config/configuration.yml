@@ -746,6 +746,7 @@ access_control:
       resources:
         - '^/sabnzbd\/api.*$'
         - '^/webdav.*$'
+        - '^/content.*$'
 
     ## FreshRSS API endpoints bypass authentication for RSS reader apps
     - domain: '{{ env "TEMPLATE_FRESHRSS_HOSTNAME" }}'
