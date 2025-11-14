@@ -1,2 +1,8 @@
 # Ignore everything in the data folder
 data/
+
+# Ignore environment files
+.env
+
+# Ignore nzbdav config directory
+apps/nzbdav/config/
