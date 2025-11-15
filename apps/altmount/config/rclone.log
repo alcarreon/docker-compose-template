@@ -1,2 +1,0 @@
-2025/11/14 21:20:18 DEBUG : rclone: Version "v1.71.2" starting with parameters ["rclone" "rcd" "--rc-addr" ":5573" "--rc-no-auth" "--config" "/config/rclone/rclone.conf" "--log-file" "/config/rclone.log" "--use-cookies" "--log-level" "DEBUG" "--cache-dir" "/config/cache"]
-2025/11/14 21:20:18 CRITICAL: Failed to start remote control: failed to init server: listen tcp :5573: bind: address already in use
