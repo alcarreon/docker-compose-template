@@ -118,3 +118,15 @@ networks:
   default:
     name: ${DOCKER_NETWORK:-aio_default}
     external: ${DOCKER_NETWORK_EXTERNAL:-false}
+
+volumes:
+  nzbdav:
+    driver: rclone
+    driver_opts:
+      remote: 'nzb-dav:'
+      allow_other: 'true'
+      vfs_cache_mode: off
+      dir_cache_time: 1s
+      allow_non_empty: 'true'
+      uid: 1001
+      gid: 1001

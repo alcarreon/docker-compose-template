@@ -6,3 +6,9 @@ data/
 
 # Ignore nzbdav config directory
 apps/nzbdav/config/
+
+# Ignore altmount config directory
+apps/altmount/config/
+
+# Ignore authelia config directory
+apps/authelia/config/

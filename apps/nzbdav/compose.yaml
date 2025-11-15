@@ -16,6 +16,7 @@ services:
       - "traefik.http.routers.nzbdav.middlewares=authelia@docker"
     volumes:
       - ./config:/config
+      - nzbdav:/mnt/nzbdav
     profiles:
       - nzbdav
       - all

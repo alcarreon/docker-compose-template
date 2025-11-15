@@ -12,6 +12,7 @@ services:
     volumes:
       - ${DOCKER_DATA_DIR}/jellyfin:/config
       - /mnt:/mnt:rslave
+      - nzbdav:/mnt/nzbdav
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.jellyfin.rule=Host(`${JELLYFIN_HOSTNAME?}`)"
@@ -24,3 +25,4 @@ services:
     profiles:
       - jellyfin
       - all
+

@@ -19,6 +19,7 @@ services:
       - /mnt:/mnt:rshared
       - ${DOCKER_DATA_DIR}/decypharr:/app
       - ./config.json:/app/config.json
+      - nzbdav:/mnt/nzbdav
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.decypharr.rule=Host(`${DECYPHARR_HOSTNAME?}`)"

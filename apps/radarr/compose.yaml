@@ -12,6 +12,7 @@ services:
       - /mnt:/mnt:rslave
       - ${DOCKER_DATA_DIR}/radarr/default/:/config
       - /usr/bin/rclone:/usr/bin/rclone
+      - nzbdav:/mnt/nzbdav
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.radarr.rule=Host(`${RADARR_HOSTNAME}`)"
@@ -46,6 +47,7 @@ services:
       - /mnt:/mnt:rslave
       - ${DOCKER_DATA_DIR}/radarr/4k:/config
       - /usr/bin/rclone:/usr/bin/rclone
+      - nzbdav:/mnt/nzbdav
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.radarr4k.rule=Host(`${RADARR4K_HOSTNAME}`)"
@@ -79,6 +81,7 @@ services:
       - /mnt:/mnt:rslave
       - ${DOCKER_DATA_DIR}/radarr/anime:/config
       - /usr/bin/rclone:/usr/bin/rclone
+      - nzbdav:/mnt/nzbdav
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.radarranime.rule=Host(`${RADARRANIME_HOSTNAME}`)"
